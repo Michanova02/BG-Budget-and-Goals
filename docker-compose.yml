@@ -12,19 +12,20 @@ services:
 
   backend:
     build: 
-      context: ./RutaATuCarpetaBackend
+      context: ./
       dockerfile: Dockerfile
     container_name: bg_api
     ports:
-      - "8080:80"
+      - "8080:8080"
     environment:
       - ConnectionStrings__DefaultConnection=Server=db;Database=BGDababase;User=sa;Password=TuPasswordSeguro123!;TrustServerCertificate=True;
+      - ASPNETCORE_URLS=http://+:8080
     depends_on:
       - db
 
   frontend:
     build: 
-      context: ./RutaATuCarpetaFrontend
+      context: ./bg-frontend
       dockerfile: Dockerfile
     container_name: bg_client
     ports:

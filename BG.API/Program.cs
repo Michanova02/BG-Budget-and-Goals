@@ -11,14 +11,14 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 0. Configurar CORS para permitir peticiones desde el Frontend (React)
+// 0. Configurar CORS para permitir peticiones desde cualquier origen (Local y Codespaces)
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173") // URL de tu frontend con Vite
+            policy.AllowAnyOrigin() 
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
@@ -94,6 +94,22 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 var app = builder.Build();
+
+// Aplicar migraciones y crear la base de datos automáticamente al arrancar
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<ApplicationDbContext>();
+        context.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Ocurrió un error al migrar la base de datos.");
+    }
+}
 
 if (app.Environment.IsDevelopment())
 {

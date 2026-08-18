@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-// Aquí le decimos a React a qué puerto debe enviarle los datos a C#
+// Aquí le decimos a React a qué puerto en la nube debe enviarle los datos a C#
 const api = axios.create({
-  baseURL: 'http://localhost:5270/api', 
+  baseURL: 'https://effective-cod-wprqgwgg67qh5qvr-8080.app.github.dev/api', 
 });
 
 // Este interceptor asegura que el JWT (Token) viaje en cada petición para los CU01 y CU02
