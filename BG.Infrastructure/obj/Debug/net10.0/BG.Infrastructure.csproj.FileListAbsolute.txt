@@ -32,3 +32,4 @@ C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\obj\Debug
 C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.pdb
 C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.genruntimeconfig.cache
 C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\obj\Debug\net10.0\ref\BG.Infrastructure.dll
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.sourcelink.json

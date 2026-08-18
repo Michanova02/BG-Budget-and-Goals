@@ -29,16 +29,19 @@ function Dashboard({ onLogout, nombreUsuario }) {
   // Estados para el filtro de mes y año
   const [mes, setMes] = useState(new Date().getMonth() + 1);
   const [anio, setAnio] = useState(new Date().getFullYear());
+  const [transaccionesDelMes, setTransaccionesDelMes] = useState([]);
 
   const fetchDashboard = useCallback(async () => {
     try {
-      const [summaryRes, budgetsRes] = await Promise.all([
+      const [summaryRes, budgetsRes, txRes] = await Promise.all([
         api.get(`/Dashboard/summary?mes=${mes}&año=${anio}`).catch(() => ({ data: { balance: 0, totalIngresos: 0, totalGastos: 0 } })),
-        api.get(`/Budgets?mes=${mes}&anio=${anio}`).catch(() => ({ data: [] }))
+        api.get(`/Budgets?mes=${mes}&anio=${anio}`).catch(() => ({ data: [] })),
+        api.get(`/Transactions?mes=${mes}&anio=${anio}`).catch(() => ({ data: [] }))
       ]);
 
       setSummary(summaryRes.data);
       setBudgets(Array.isArray(budgetsRes.data) ? budgetsRes.data : []);
+      setTransaccionesDelMes(Array.isArray(txRes.data) ? txRes.data : []);
     } catch (err) {
       console.error(err);
       setError('No se pudo cargar el resumen. Revisa tu conexión.');
@@ -56,6 +59,48 @@ function Dashboard({ onLogout, nombreUsuario }) {
   const savingsGoalPercent = Math.min(Math.max((totalBalance / 200000) * 100, 0), 100).toFixed(0);
   const totalIngresosReal = summary?.totalIngresos || 0;
   const totalGastosReal = summary?.totalGastos || 0;
+
+  // --- CÁLCULO DINÁMICO POR SEMANAS DEL MES (CORREGIDO PARA GASTOS E INGRESOS) ---
+  const semanasCalculadas = [
+    { s: 'S1', ingresos: 0, gastos: 0 },
+    { s: 'S2', ingresos: 0, gastos: 0 },
+    { s: 'S3', ingresos: 0, gastos: 0 },
+    { s: 'S4', ingresos: 0, gastos: 0 },
+  ];
+
+  transaccionesDelMes.forEach(t => {
+    const fechaTx = new Date(t.fecha || t.date || Date.now());
+    const dia = fechaTx.getDate();
+    
+    let indexSemana = 3; // S4 por defecto (del 22 en adelante)
+    if (dia >= 1 && dia <= 7) indexSemana = 0;
+    else if (dia >= 8 && dia <= 14) indexSemana = 1;
+    else if (dia >= 15 && dia <= 21) indexSemana = 2;
+
+    const monto = parseFloat(t.monto || t.amount || 0);
+    
+    // Validación estricta para asegurar que sólo los ingresos reales vayan a la barra verde
+    const tipoTx = (t.tipo || t.type || '').toLowerCase();
+    const esIngreso = tipoTx === 'ingreso' || tipoTx === 'income' || t.isIncome === true;
+
+    if (esIngreso) {
+      semanasCalculadas[indexSemana].ingresos += Math.abs(monto);
+    } else {
+      semanasCalculadas[indexSemana].gastos += Math.abs(monto);
+    }
+  });
+
+  const weeklyData = transaccionesDelMes.length > 0 ? semanasCalculadas : [
+    { s: 'S1', ingresos: 0, gastos: 0 },
+    { s: 'S2', ingresos: 0, gastos: 0 },
+    { s: 'S3', ingresos: 0, gastos: 0 },
+    { s: 'S4', ingresos: 0, gastos: 0 },
+  ];
+
+  const maxWeeklyValue = Math.max(
+    ...weeklyData.map(item => Math.max(item.ingresos, item.gastos)),
+    1 // Evitar división por cero
+  );
 
   const sumaTotal = totalIngresosReal + totalGastosReal;
   let gradientStops = '#2d3139 0% 100%';
@@ -137,7 +182,7 @@ function Dashboard({ onLogout, nombreUsuario }) {
       {/* SECCIÓN DE GRÁFICOS */}
       <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '12px', marginBottom: '15px' }}>
         
-        {/* Gráfico 1: Resumen de Ingresos vs Gastos */}
+        {/* Gráfico 1: Resumen de Ingresos vs Gastos con Alturas Dinámicas por Semana */}
         <div style={{ backgroundColor: '#1a1d21', padding: '18px', borderRadius: '12px', border: '1px solid #2d3139', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px', flexWrap: 'wrap', gap: '8px' }}>
             <h3 style={{ margin: 0, fontSize: '16px', fontWeight: '600', color: '#fff' }}>Resumen Financiero (Mes {mes})</h3>
@@ -155,29 +200,23 @@ function Dashboard({ onLogout, nombreUsuario }) {
             <div style={{ flex: 1, minWidth: '220px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', height: '110px', borderBottom: '1px solid #2d3139', paddingBottom: '6px', paddingLeft: '5px', paddingRight: '5px' }}>
                 
-                {/* SEMANA 1 */}
-                <div style={{ display: 'flex', gap: '5px', alignItems: 'flex-end', height: '100%' }}>
-                  <div style={{ width: '18px', height: '50%', backgroundColor: '#5fe3c0', borderRadius: '4px 4px 0 0' }} title="Ingresos Sem 1"></div>
-                  <div style={{ width: '18px', height: '35%', backgroundColor: '#ff6b6b', borderRadius: '4px 4px 0 0' }} title="Gastos Sem 1"></div>
-                </div>
+                {weeklyData.map((item, idx) => {
+                  const ingresosHeight = item.ingresos > 0 ? Math.max((item.ingresos / maxWeeklyValue) * 100, 6) : 0;
+                  const gastosHeight = item.gastos > 0 ? Math.max((item.gastos / maxWeeklyValue) * 100, 6) : 0;
 
-                {/* SEMANA 2 */}
-                <div style={{ display: 'flex', gap: '5px', alignItems: 'flex-end', height: '100%' }}>
-                  <div style={{ width: '18px', height: '70%', backgroundColor: '#5fe3c0', borderRadius: '4px 4px 0 0' }} title="Ingresos Sem 2"></div>
-                  <div style={{ width: '18px', height: '60%', backgroundColor: '#ff6b6b', borderRadius: '4px 4px 0 0' }} title="Gastos Sem 2"></div>
-                </div>
-
-                {/* SEMANA 3 */}
-                <div style={{ display: 'flex', gap: '5px', alignItems: 'flex-end', height: '100%' }}>
-                  <div style={{ width: '18px', height: '60%', backgroundColor: '#5fe3c0', borderRadius: '4px 4px 0 0' }} title="Ingresos Sem 3"></div>
-                  <div style={{ width: '18px', height: '45%', backgroundColor: '#ff6b6b', borderRadius: '4px 4px 0 0' }} title="Gastos Sem 3"></div>
-                </div>
-
-                {/* SEMANA 4 */}
-                <div style={{ display: 'flex', gap: '5px', alignItems: 'flex-end', height: '100%' }}>
-                  <div style={{ width: '18px', height: '95%', backgroundColor: '#5fe3c0', borderRadius: '4px 4px 0 0' }} title="Ingresos Sem 4"></div>
-                  <div style={{ width: '18px', height: '80%', backgroundColor: '#ff6b6b', borderRadius: '4px 4px 0 0' }} title="Gastos Sem 4"></div>
-                </div>
+                  return (
+                    <div key={idx} style={{ display: 'flex', gap: '5px', alignItems: 'flex-end', height: '100%' }}>
+                      <div 
+                        style={{ width: '18px', height: `${ingresosHeight}%`, backgroundColor: '#5fe3c0', borderRadius: '4px 4px 0 0', transition: 'height 0.4s ease' }} 
+                        title={`Ingresos ${item.s}: $${item.ingresos.toFixed(2)}`}
+                      ></div>
+                      <div 
+                        style={{ width: '18px', height: `${gastosHeight}%`, backgroundColor: '#ff6b6b', borderRadius: '4px 4px 0 0', transition: 'height 0.4s ease' }} 
+                        title={`Gastos ${item.s}: $${item.gastos.toFixed(2)}`}
+                      ></div>
+                    </div>
+                  );
+                })}
 
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', color: '#8b92a5', marginTop: '6px', paddingLeft: '5px', paddingRight: '5px' }}>
@@ -188,7 +227,7 @@ function Dashboard({ onLogout, nombreUsuario }) {
               </div>
             </div>
 
-            {/* GRÁFICO CIRCULAR INTERACTIVO CON LÓGICA INVERTIDA CORRECTA */}
+            {/* GRÁFICO CIRCULAR INTERACTIVO */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <div 
                 style={donutStyle}
@@ -197,16 +236,15 @@ function Dashboard({ onLogout, nombreUsuario }) {
                   const x = e.clientX - rect.left;
                   const y = e.clientY - rect.top;
                   
-                  // Lógica corregida según posición en pantalla del círculo con conic-gradient
                   const centroX = rect.width / 2;
                   const centroY = rect.height / 2;
                   
                   if (x > centroX && y < centroY) {
-                    setHoverInfo('ingresos'); // Superior derecha (Verde)
+                    setHoverInfo('ingresos'); 
                   } else if (y > centroY) {
-                    setHoverInfo('ingresos'); // Inferior completa (Verde)
+                    setHoverInfo('ingresos'); 
                   } else {
-                    setHoverInfo('gastos');   // Superior izquierda (Rojo)
+                    setHoverInfo('gastos');   
                   }
                 }}
                 onMouseLeave={() => setHoverInfo(null)}
