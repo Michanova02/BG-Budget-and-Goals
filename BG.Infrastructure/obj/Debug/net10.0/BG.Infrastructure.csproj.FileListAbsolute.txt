@@ -1,0 +1,34 @@
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.AssemblyInfo.cs
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Infrastructure\bin\Debug\net10.0\BG.Infrastructure.deps.json
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Infrastructure\bin\Debug\net10.0\BG.Infrastructure.runtimeconfig.json
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Infrastructure\bin\Debug\net10.0\BG.Infrastructure.dll
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Infrastructure\bin\Debug\net10.0\BG.Infrastructure.pdb
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Infrastructure\bin\Debug\net10.0\BG.Domain.dll
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Infrastructure\bin\Debug\net10.0\BG.Domain.pdb
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infra.CF9AAD63.Up2Date
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.dll
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Infrastructure\obj\Debug\net10.0\refint\BG.Infrastructure.dll
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.pdb
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.genruntimeconfig.cache
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Infrastructure\obj\Debug\net10.0\ref\BG.Infrastructure.dll
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\bin\Debug\net10.0\BG.Infrastructure.deps.json
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\bin\Debug\net10.0\BG.Infrastructure.runtimeconfig.json
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\bin\Debug\net10.0\BG.Infrastructure.dll
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\bin\Debug\net10.0\BG.Infrastructure.pdb
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\bin\Debug\net10.0\BG.Domain.dll
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\bin\Debug\net10.0\BG.Domain.pdb
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.AssemblyInfo.cs
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infra.CF9AAD63.Up2Date
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.dll
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\obj\Debug\net10.0\refint\BG.Infrastructure.dll
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.pdb
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\obj\Debug\net10.0\BG.Infrastructure.genruntimeconfig.cache
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Infrastructure\obj\Debug\net10.0\ref\BG.Infrastructure.dll

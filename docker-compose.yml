@@ -1,0 +1,36 @@
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: bg_database
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=TuPasswordSeguro123!
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+
+  backend:
+    build: 
+      context: ./RutaATuCarpetaBackend
+      dockerfile: Dockerfile
+    container_name: bg_api
+    ports:
+      - "8080:80"
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=db;Database=BGDababase;User=sa;Password=TuPasswordSeguro123!;TrustServerCertificate=True;
+    depends_on:
+      - db
+
+  frontend:
+    build: 
+      context: ./RutaATuCarpetaFrontend
+      dockerfile: Dockerfile
+    container_name: bg_client
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  sql_data:

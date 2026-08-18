@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="BG.API/BG.API.csproj" />
+  <Project Path="BG.Application/BG.Application.csproj" />
+  <Project Path="BG.Domain/BG.Domain.csproj" />
+  <Project Path="BG.Infrastructure/BG.Infrastructure.csproj" />
+  <Project Path="BG.Tests/BG.Tests.csproj" />
+</Solution>

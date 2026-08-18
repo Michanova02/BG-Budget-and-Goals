@@ -1,0 +1,22 @@
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Domain\bin\Debug\net10.0\BG.Domain.deps.json
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Domain\bin\Debug\net10.0\BG.Domain.dll
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Domain\bin\Debug\net10.0\BG.Domain.pdb
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Domain\obj\Debug\net10.0\BG.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Domain\obj\Debug\net10.0\BG.Domain.AssemblyInfoInputs.cache
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Domain\obj\Debug\net10.0\BG.Domain.AssemblyInfo.cs
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Domain\obj\Debug\net10.0\BG.Domain.csproj.CoreCompileInputs.cache
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Domain\obj\Debug\net10.0\BG.Domain.dll
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Domain\obj\Debug\net10.0\refint\BG.Domain.dll
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Domain\obj\Debug\net10.0\BG.Domain.pdb
+C:\Users\metag\OneDrive\Desktop\B&G Budget and Goals\BG.Domain\obj\Debug\net10.0\ref\BG.Domain.dll
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Domain\bin\Debug\net10.0\BG.Domain.deps.json
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Domain\bin\Debug\net10.0\BG.Domain.dll
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Domain\bin\Debug\net10.0\BG.Domain.pdb
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Domain\obj\Debug\net10.0\BG.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Domain\obj\Debug\net10.0\BG.Domain.AssemblyInfoInputs.cache
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Domain\obj\Debug\net10.0\BG.Domain.AssemblyInfo.cs
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Domain\obj\Debug\net10.0\BG.Domain.csproj.CoreCompileInputs.cache
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Domain\obj\Debug\net10.0\BG.Domain.dll
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Domain\obj\Debug\net10.0\refint\BG.Domain.dll
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Domain\obj\Debug\net10.0\BG.Domain.pdb
+C:\Users\metag\OneDrive\Desktop\BG_ Budget_and_Goals\BG.Domain\obj\Debug\net10.0\ref\BG.Domain.dll
