@@ -36,7 +36,9 @@ function Dashboard({ onLogout, nombreUsuario }) {
       const [summaryRes, budgetsRes, txRes] = await Promise.all([
         api.get(`/Dashboard/summary?mes=${mes}&año=${anio}`).catch(() => ({ data: { balance: 0, totalIngresos: 0, totalGastos: 0 } })),
         api.get(`/Budgets?mes=${mes}&anio=${anio}`).catch(() => ({ data: [] })),
-        api.get(`/Transactions?mes=${mes}&anio=${anio}`).catch(() => ({ data: [] }))
+        // CAMBIO CLAVE: Apuntamos al endpoint que filtra por el usuario autenticado (ej. /Transactions/user o /Transactions/my-transactions)
+        // Si tu backend filtra automáticamente en el endpoint base por el Token JWT, déjalo como /Transactions
+        api.get(`/Transactions/user?mes=${mes}&anio=${anio}`).catch(() => api.get(`/Transactions?mes=${mes}&anio=${anio}`)).catch(() => ({ data: [] }))
       ]);
 
       setSummary(summaryRes.data);
@@ -60,7 +62,7 @@ function Dashboard({ onLogout, nombreUsuario }) {
   const totalIngresosReal = summary?.totalIngresos || 0;
   const totalGastosReal = summary?.totalGastos || 0;
 
-  // --- CÁLCULO DINÁMICO POR SEMANAS DEL MES (CORREGIDO PARA GASTOS E INGRESOS) ---
+  // --- CÁLCULO DINÁMICO POR SEMANAS DEL MES (EXCLUSIVO DEL USUARIO) ---
   const semanasCalculadas = [
     { s: 'S1', ingresos: 0, gastos: 0 },
     { s: 'S2', ingresos: 0, gastos: 0 },
